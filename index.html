@@ -1,1 +1,515 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Happy Birthday Tyler!</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(
+        145deg,
+        #07152e,
+        #123c70,
+        #2463a0
+      );
+      font-family: 'Trebuchet MS', Arial, sans-serif;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 550px;
+      padding: 40px 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(white 1px, transparent 2px),
+        radial-gradient(#9edbff 1px, transparent 2px);
+      background-size: 80px 80px, 130px 130px;
+      background-position: 0 0, 35px 45px;
+      opacity: 0.25;
+    }
+
+    .subtitle {
+      color: #b9e5ff;
+      font-size: 15px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-size: clamp(30px, 7vw, 48px);
+      margin: 15px 0;
+      color: #ffffff;
+      text-shadow: 0 0 25px #58b9ff;
+    }
+
+    .message {
+      color: #d4efff;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    /* THE BIRTHDAY CAKE */
+
+    .cake-scene {
+      height: 310px;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      margin: 20px auto;
+    }
+
+    .cake {
+      position: relative;
+      width: 260px;
+      height: 255px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    .plate {
+      position: absolute;
+      width: 290px;
+      height: 22px;
+      background: linear-gradient(
+        #eaf8ff, #8cbde3
+      );
+      border-radius: 50%;
+      bottom: 0;
+      left: -15px;
+      box-shadow: 0 12px 25px #0006;
+    }
+
+    .layer {
+      position: absolute;
+      left: 15px;
+      width: 230px;
+      height: 78px;
+      border-radius: 12px 12px 8px 8px;
+      background: linear-gradient(
+        90deg,
+        #15549a,
+        #429ce7 45%,
+        #15549a
+      );
+      border-bottom: 8px solid #0c3974;
+      box-shadow: inset 0 5px 12px #ffffff30;
+    }
+
+    .bottom-layer {
+      bottom: 14px;
+    }
+
+    .top-layer {
+      bottom: 91px;
+      left: 37px;
+      width: 186px;
+      height: 72px;
+      background: linear-gradient(
+        90deg,
+        #2775c2,
+        #8bd4ff 50%,
+        #2775c2
+      );
+    }
+
+    .icing {
+      position: absolute;
+      height: 22px;
+      background: #d9f4ff;
+      border-radius: 50%;
+      box-shadow: 0 4px 5px #ffffff55;
+    }
+
+    .icing-bottom {
+      bottom: 77px;
+      left: 15px;
+      width: 230px;
+    }
+
+    .icing-top {
+      bottom: 150px;
+      left: 37px;
+      width: 186px;
+    }
+
+    .drip {
+      position: absolute;
+      width: 18px;
+      background: #d9f4ff;
+      border-radius: 0 0 12px 12px;
+    }
+
+    .d1 {
+      height: 30px;
+      left: 47px;
+      bottom: 135px;
+    }
+
+    .d2 {
+      height: 22px;
+      left: 108px;
+      bottom: 142px;
+    }
+
+    .d3 {
+      height: 34px;
+      left: 182px;
+      bottom: 130px;
+    }
+
+    .d4 {
+      height: 23px;
+      left: 42px;
+      bottom: 65px;
+    }
+
+    .d5 {
+      height: 30px;
+      left: 125px;
+      bottom: 60px;
+    }
+
+    .d6 {
+      height: 25px;
+      left: 205px;
+      bottom: 64px;
+    }
+
+    .candles {
+      position: absolute;
+      bottom: 165px;
+      left: 70px;
+      display: flex;
+      gap: 22px;
+      align-items: flex-end;
+    }
+
+    .candle {
+      width: 13px;
+      height: 45px;
+      background: repeating-linear-gradient(
+        45deg,
+        #ffffff 0px,
+        #ffffff 7px,
+        #66c6ff 7px,
+        #66c6ff 14px
+      );
+      border-radius: 4px;
+      position: relative;
+    }
+
+    .candle:nth-child(2) {
+      height: 53px;
+    }
+
+    .candle:nth-child(3) {
+      height: 49px;
+    }
+
+    .flame {
+      position: absolute;
+      width: 15px;
+      height: 23px;
+      bottom: 49px;
+      left: -1px;
+      background: #ffcb48;
+      border-radius: 50% 50% 45% 45%;
+      box-shadow:
+        0 0 12px #ffcf56,
+        0 0 25px #ffb700;
+      animation: flicker 0.5s infinite alternate;
+      transform-origin: bottom;
+    }
+
+    .candle:nth-child(2) .flame {
+      bottom: 57px;
+    }
+
+    .candle:nth-child(3) .flame {
+      bottom: 53px;
+    }
+
+    @keyframes flicker {
+      from {
+        transform: scale(0.85) rotate(-5deg);
+      }
+      to {
+        transform: scale(1.12) rotate(5deg);
+      }
+    }
+
+    .cake.revealed .flame {
+      box-shadow:
+        0 0 20px #ffe16a,
+        0 0 45px #ffb700;
+    }
+
+    /* SURPRISE BUTTON */
+
+    button {
+      border: none;
+      padding: 17px 30px;
+      border-radius: 40px;
+      background: linear-gradient(
+        135deg,
+        #60c7ff,
+        #2479e5
+      );
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 8px 25px #0005;
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.06);
+    }
+
+    button:focus-visible {
+      outline: 3px solid white;
+      outline-offset: 4px;
+    }
+
+    /* HIDDEN BIRTHDAY MESSAGE */
+
+    #surprise {
+      display: none;
+      margin-top: 25px;
+    }
+
+    #surprise.visible {
+      display: block;
+      animation: popIn 0.8s ease-out;
+    }
+
+    @keyframes popIn {
+      from {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .birthday-title {
+      color: #ffe7a0;
+      font-size: clamp(32px, 8vw, 52px);
+      text-shadow: 0 0 25px #ffdb7a;
+    }
+
+    .birthday-note {
+      font-size: 19px;
+      color: #e3f5ff;
+      line-height: 1.8;
+    }
+
+    /* CONFETTI */
+
+    .confetti {
+      position: fixed;
+      top: -20px;
+      width: 9px;
+      height: 15px;
+      pointer-events: none;
+      z-index: 10;
+      animation: confettiFall linear forwards;
+    }
+
+    @keyframes confettiFall {
+      from {
+        transform: translateY(-30px) rotate(0deg);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(110vh) rotate(900deg);
+        opacity: 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cake, .flame, .confetti {
+        animation: none;
+      }
+      .confetti {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="stars"></div>
+
+  <main class="container">
+
+    <p class="subtitle">A little something for you</p>
+
+    <h1>It's Your Special Day!</h1>
+
+    <p class="message">
+      I made you a little birthday surprise.
+    </p>
+
+    <div class="cake-scene">
+
+      <div class="cake" id="cake">
+
+        <div class="plate"></div>
+
+        <div class="layer bottom-layer"></div>
+        <div class="layer top-layer"></div>
+
+        <div class="icing icing-bottom"></div>
+        <div class="icing icing-top"></div>
+
+        <div class="drip d1"></div>
+        <div class="drip d2"></div>
+        <div class="drip d3"></div>
+        <div class="drip d4"></div>
+        <div class="drip d5"></div>
+        <div class="drip d6"></div>
+
+        <div class="candles">
+          <div class="candle">
+            <div class="flame"></div>
+          </div>
+
+          <div class="candle">
+            <div class="flame"></div>
+          </div>
+
+          <div class="candle">
+            <div class="flame"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <button id="surpriseButton"
+            onclick="showSurprise()">
+      Open Your Birthday Surprise 🎁
+    </button>
+
+    <div id="surprise" aria-live="polite">
+
+      <h1 class="birthday-title">
+        Happy Birthday Tyler! 🎉
+      </h1>
+
+      <p class="birthday-note">
+        Wishing you a day full of happiness,
+        laughter, and everything you love.
+        <br>
+        Hope your birthday is as amazing as you are!
+        💙
+      </p>
+
+    </div>
+
+  </main>
+
+  <script>
+    function showSurprise() {
+
+      const surprise =
+        document.getElementById("surprise");
+
+      const cake =
+        document.getElementById("cake");
+
+      const button =
+        document.getElementById("surpriseButton");
+
+      surprise.classList.add("visible");
+      cake.classList.add("revealed");
+
+      button.style.display = "none";
+
+      createConfetti();
+    }
+
+    function createConfetti() {
+
+      const colors = [
+        "#58c4ff",
+        "#ffffff",
+        "#ffd86b",
+        "#276ee8",
+        "#a9e7ff",
+        "#9b8cff"
+      ];
+
+      for (let i = 0; i < 160; i++) {
+
+        const piece =
+          document.createElement("div");
+
+        piece.classList.add("confetti");
+
+        piece.style.left =
+          Math.random() * 100 + "vw";
+
+        piece.style.backgroundColor =
+          colors[Math.floor(
+            Math.random() * colors.length
+          )];
+
+        piece.style.animationDuration =
+          (3 + Math.random() * 3) + "s";
+
+        piece.style.animationDelay =
+          Math.random() * 2 + "s";
+
+        piece.style.borderRadius =
+          Math.random() > 0.5 ? "50%" : "2px";
+
+        document.body.appendChild(piece);
+
+        piece.addEventListener(
+          "animationend",
+          () => piece.remove()
+        );
+      }
+    }
+  </script>
+</body>
+</html>
+
